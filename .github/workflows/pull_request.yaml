@@ -19,10 +19,11 @@ jobs:
         uses: actions/checkout@v4
         with:
           ref: ${{ github.event.pull_request.head.ref }}
+          
       - name: Setup TFenv
         uses: hashicorp/setup-terraform@v2
         with:
-          terraform_version: 1.5.2
+          terraform_version: 1.14.3
       
       - name: Install tgenv
         run: |
@@ -41,8 +42,6 @@ jobs:
       - name: Run Terragrunt Plan
         working-directory: environments/dev/skillupwithsachin-eks-demo
         run: |
-          tgenv install
-          tgenv use
           terragrunt init
           terragrunt plan --terragrunt-non-interactive
       
