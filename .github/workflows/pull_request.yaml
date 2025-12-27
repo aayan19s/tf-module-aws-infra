@@ -23,15 +23,19 @@ jobs:
         uses: hashicorp/setup-terraform@v2
         with:
           terraform_version: 1.5.2
-      - name: Setup tgenv
-        uses: tgenv/setup-tgenv@v1
-        with:
-          tgenv_version: 'v0.53.8'
+      
+      - name: Install tgenv
+        run: |
+          git clone https://github.com/tgenv/tgenv.git ~/.tgenv
+          echo "$HOME/.tgenv/bin" >> $GITHUB_PATH
+      
+      - name: Verify tgenv
+        run: tgenv --version
 
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v2
         with:
-          role-to-assume: arn:aws:iam:138775093046:role/skillupwithsachin-gha-terraform-svc-role
+          role-to-assume: arn:aws:iam::138775093046:role/skillupwithsachin-gha-terraform-svc-role
           aws-region: us-east-1
 
       - name: Run Terragrunt Plan
