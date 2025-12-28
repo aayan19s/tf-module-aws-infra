@@ -19,7 +19,7 @@ inputs = {
              max_size       = 1
              desired_size   = 1
              disk_size      = 40
-             subnet_ids     = ["subnet-f3507acd", "subnet-5d449d53"]
+             subnet_ids     = ["subnet-c1a4479e", "subnet-a934d3cf"]
              iam_role_name  = "skillupwithsachin-eks-demo-node-role"
         }
     }
